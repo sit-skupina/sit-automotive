@@ -51,7 +51,7 @@ export default function Navbar() {
         >
           <div className="container-sit h-full flex items-center justify-between">
             <Link to="/" className="flex items-center">
-              <img src={sitLogo} alt="SIT Automotive" className="h-7" />
+              <img src={sitLogo} alt="SIT Automotive" className="h-7 bg-white rounded-full p-1" />
             </Link>
 
             <div className="hidden md:flex items-center gap-8">
