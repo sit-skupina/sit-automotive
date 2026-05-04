@@ -26,6 +26,11 @@ export const Route = createRootRoute({
       { property: "og:title", content: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz Praha" },
       { property: "og:description", content: "Prémiová autopůjčovna Mercedes-Benz v Praze. Krátkodobý i dlouhodobý pronájem vozů se vším v ceně." },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz Praha" },
+      { name: "twitter:description", content: "Prémiová autopůjčovna Mercedes-Benz v Praze. Krátkodobý i dlouhodobý pronájem vozů se vším v ceně." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/ypS9RaVyxCStGNf1td7aGxe0KSg1/social-images/social-1777925086131-1-AMG-S63-2024-review.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/ypS9RaVyxCStGNf1td7aGxe0KSg1/social-images/social-1777925086131-1-AMG-S63-2024-review.webp" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
