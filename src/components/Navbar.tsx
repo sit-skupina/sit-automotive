@@ -73,7 +73,8 @@ export default function Navbar() {
             </div>
 
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 transition-colors"
+              style={{ color: scrolled ? "var(--sit-text)" : "#FFFFFF" }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
