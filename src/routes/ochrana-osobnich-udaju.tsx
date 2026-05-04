@@ -5,8 +5,14 @@ import Footer from "@/components/Footer";
 export const Route = createFileRoute("/ochrana-osobnich-udaju")({
   head: () => ({
     meta: [
-      { title: "Ochrana osobních údajů | SIT Automotive" },
-      { name: "description", content: "Informace o zpracování a ochraně osobních údajů společností SIT Automotive s.r.o." },
+      { title: "Ochrana osobních údajů – GDPR | SIT Automotive s.r.o." },
+      { name: "description", content: "Zásady ochrany osobních údajů dle GDPR. Informace o zpracování vašich dat společností SIT Automotive s.r.o., Praha. Vaše práva a kontakt na správce." },
+      { name: "robots", content: "noindex, follow" },
+      { property: "og:title", content: "Ochrana osobních údajů | SIT Automotive" },
+      { property: "og:description", content: "Zásady ochrany osobních údajů společnosti SIT Automotive s.r.o. dle GDPR." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://sitautomotive.cz/ochrana-osobnich-udaju" },
     ],
   }),
   component: OchranaPage,

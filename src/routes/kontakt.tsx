@@ -8,14 +8,48 @@ import GroupBanner from "@/components/GroupBanner";
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
-      { title: "Kontakt | SIT Automotive" },
-      { name: "description", content: "Kontaktujte SIT Automotive. Rezervace, dotazy na pronájem Mercedes-Benz. Odpovídáme v pracovní dny do 2 hodin." },
-      { property: "og:title", content: "Kontakt | SIT Automotive" },
-      { property: "og:description", content: "Kontaktujte SIT Automotive pro pronájem Mercedes-Benz v Praze." },
+      { title: "Kontakt – Pronájem Mercedes-Benz Praha | SIT Automotive" },
+      { name: "description", content: "Kontaktujte SIT Automotive – prémiovou autopůjčovnu Mercedes-Benz a BMW v Praze. Rezervace, dotazy na pronájem. Odpovídáme v pracovní dny do 2 hodin." },
+      { property: "og:title", content: "Kontakt – Pronájem Mercedes-Benz Praha | SIT Automotive" },
+      { property: "og:description", content: "Kontaktujte SIT Automotive pro pronájem Mercedes-Benz a BMW v Praze. Rezervace a dotazy vyřizujeme v pracovní dny do 2 hodin." },
+      { property: "og:url", content: "https://sitautomotive.cz/kontakt" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Kontakt – Pronájem Mercedes-Benz Praha | SIT Automotive" },
+      { name: "twitter:description", content: "Kontaktujte SIT Automotive pro pronájem Mercedes-Benz a BMW v Praze. Odpovídáme do 2 hodin." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://sitautomotive.cz/kontakt" },
     ],
   }),
   component: KontaktPage,
 });
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt – SIT Automotive",
+  "url": "https://sitautomotive.cz/kontakt",
+  "description": "Kontaktní stránka prémiové autopůjčovny SIT Automotive v Praze.",
+  "mainEntity": {
+    "@type": ["LocalBusiness", "AutoRental"],
+    "name": "SIT Automotive",
+    "telephone": ["+420770129982", "+420606209108"],
+    "email": "rezervace@sitautomotive.cz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Českomoravská 142/18",
+      "addressLocality": "Praha 9",
+      "postalCode": "190 00",
+      "addressCountry": "CZ"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  }
+};
 
 function KontaktPage() {
   const [formData, setFormData] = useState({
@@ -29,12 +63,13 @@ function KontaktPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
       <Navbar />
 
       {/* HERO */}
       <section style={{ background: "var(--sit-dark)", padding: "120px 0 80px" }}>
         <div className="container-sit">
-          <h1 className="text-white" style={{ fontSize: 48 }}>Kontaktujte nás.</h1>
+          <h1 className="text-white" style={{ fontSize: 48 }}>Kontakt – pronájem vozů Praha</h1>
           <p className="text-white/65 text-lg mt-4">
             Rezervace, dotazy na pronájem, nebo jen si chtějte popovídat o vozech. Odpovídáme v pracovní dny do 2 hodin.
           </p>
@@ -45,7 +80,7 @@ function KontaktPage() {
       <section className="section-padding">
         <div className="container-sit grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           <div>
-            <h2 className="text-[28px] font-semibold font-body">Zavolejte nebo napište.</h2>
+            <h2 className="text-[28px] font-semibold font-body">Zavolejte nebo napište – rezervace pronájmu</h2>
 
             <div className="mt-8 space-y-5">
               <div className="p-6 rounded-lg" style={{ background: "var(--sit-bg-secondary)", border: "1px solid var(--border)" }}>

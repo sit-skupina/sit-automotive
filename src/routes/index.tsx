@@ -11,8 +11,16 @@ import { Car, Clock, MapPin, ShieldCheck, ChevronRight } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SIT Automotive | Prémiová autopůjčovna vozů Mercedes-Benz a BMW" },
-      { name: "description", content: "Prestižní autopůjčovna v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel bez starostí. Vše potřebné v ceně, profesionální přístup a diskrétnost." },
+      { title: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz a BMW" },
+      { name: "description", content: "Prémiová autopůjčovna Mercedes-Benz a BMW v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel bez starostí. Vše potřebné v ceně. Kontaktujte nás ještě dnes." },
+      { property: "og:title", content: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz a BMW" },
+      { property: "og:description", content: "Prémiová autopůjčovna Mercedes-Benz a BMW v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel bez starostí. Vše potřebné v ceně." },
+      { property: "og:url", content: "https://sitautomotive.cz/" },
+      { name: "twitter:title", content: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz a BMW" },
+      { name: "twitter:description", content: "Prémiová autopůjčovna Mercedes-Benz a BMW v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel. Vše v ceně." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://sitautomotive.cz/" },
     ],
   }),
   component: HomePage,
@@ -25,8 +33,39 @@ const stats = [
   { value: "Diskrétnost", label: "Profesionální přístup ke klientům" },
 ];
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "AutoRental"],
+  "name": "SIT Automotive",
+  "description": "Prémiová autopůjčovna Mercedes-Benz a BMW v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel.",
+  "url": "https://sitautomotive.cz",
+  "telephone": ["+420770129982", "+420606209108"],
+  "email": "rezervace@sitautomotive.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Pod rovinou 682/4",
+    "addressLocality": "Praha 4",
+    "postalCode": "140 00",
+    "addressCountry": "CZ"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "image": "https://storage.googleapis.com/gpt-engineer-file-uploads/ypS9RaVyxCStGNf1td7aGxe0KSg1/social-images/social-1777925086131-1-AMG-S63-2024-review.webp",
+  "priceRange": "$$",
+  "areaServed": {
+    "@type": "City",
+    "name": "Praha"
+  }
+};
+
 function HomePage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
     <div className="bg-background min-h-screen">
       <Navbar />
 
@@ -40,8 +79,11 @@ function HomePage() {
               SIT Automotive
             </span>
             <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight">
-              Prestiž. Spolehlivost. <br className="hidden md:block" /> Bez kompromisů.
+              Prémiová autopůjčovna<br className="hidden md:block" /> Mercedes-Benz Praha
             </h1>
+            <p className="text-white/55 text-lg md:text-xl font-light italic mt-2">
+              Prestiž. Spolehlivost. Bez kompromisů.
+            </p>
             <p className="text-white/80 text-lg md:text-xl leading-relaxed mt-6 mb-8 font-light">
               Specializujeme se na poskytování prémiových vozidel pro klienty, kteří vyžadují špičkový servis a reprezentativní úroveň. Váš komfort je naší prioritou.
             </p>
@@ -76,7 +118,7 @@ function HomePage() {
         <div className="container-sit">
           <div className="max-w-[800px] mx-auto text-center">
             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Představení firmy</span>
-            <h2 className="mb-6">Partner pro vaši mobilitu</h2>
+            <h2 className="mb-6">Pronájem prémiových vozů v Praze</h2>
             <p className="text-lg text-text-muted leading-relaxed mb-6">
               SIT Automotive přináší na trh autopůjčoven zcela nový standard. Náš vozový park je pečlivě sestaven z vozidel těch nejprestižnějších značek, především Mercedes-Benz a BMW. Neprovozujeme masovou půjčovnu s tisíci vozy. Zakládáme si na individuálním přístupu, maximální diskrétnosti a dokonalém technickém i vizuálním stavu každého vozu.
             </p>
@@ -92,7 +134,7 @@ function HomePage() {
         <div className="container-sit">
           <div className="text-center mb-16">
             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Naše portfolio</span>
-            <h2>Komplexní řešení mobility</h2>
+            <h2>Krátkodobý a dlouhodobý pronájem vozů</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -211,5 +253,6 @@ function HomePage() {
       <GroupBanner />
       <Footer />
     </div>
+    </>
   );
 }
