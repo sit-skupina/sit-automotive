@@ -92,13 +92,11 @@ function AutopujcovnaPage() {
       {/* VÍKENDOVÁ AKCE */}
       <section className="section-padding" style={{ background: "#FFFFFF" }}>
         <div className="container-sit">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 rounded-2xl p-10 md:p-12" style={{ background: "var(--primary)" }}>
-            <div>
-              <span className="text-[11px] font-semibold text-white/70 uppercase tracking-widest">AKČNÍ NABÍDKA</span>
-              <h3 className="text-white mt-2">Mercedes-Benz C 180d na víkend za 3 990 Kč.</h3>
-              <p className="text-[15px] text-white/80 mt-2">Zapůjčení od pátku do pondělí. Neomezené kilometry. Česká dálniční známka a GPS navigace v ceně.</p>
-            </div>
-            <Link to="/kontakt" className="btn-ghost shrink-0">Rezervovat víkend</Link>
+          <div className="rounded-xl p-8 md:p-10" style={{ background: "var(--sit-dark)" }}>
+            <span className="text-[11px] font-medium text-white/50 uppercase tracking-widest">AKČNÍ NABÍDKA</span>
+            <h3 className="text-white mt-3 max-w-[560px]">Mercedes-Benz C 180d na víkend za 3 990 Kč.</h3>
+            <p className="text-[15px] text-white/60 mt-2 max-w-[480px]">Zapůjčení od pátku do pondělí. Neomezené kilometry. Dálniční známka a GPS navigace v ceně.</p>
+            <Link to="/kontakt" className="btn-primary mt-6 inline-flex">Rezervovat víkend</Link>
           </div>
         </div>
       </section>

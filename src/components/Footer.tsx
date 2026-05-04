@@ -9,13 +9,9 @@ export default function Footer() {
             <div className="text-base font-semibold text-white uppercase tracking-wider mb-3">
               SIT AUTOMOTIVE
             </div>
-            <p className="text-sm text-white/45 leading-relaxed">
+            <p className="text-sm text-white/45 leading-relaxed max-w-[280px]">
               Prémiová autopůjčovna Mercedes-Benz. Krátkodobý a dlouhodobý pronájem vozidel. Praha.
             </p>
-            <div className="flex gap-2 mt-5">
-              <span className="border border-white/15 rounded px-2.5 py-1 text-[11px] font-medium text-white/40">Mercedes-Benz</span>
-              <span className="border border-white/15 rounded px-2.5 py-1 text-[11px] font-medium text-white/40">Praha</span>
-            </div>
           </div>
 
           <div>

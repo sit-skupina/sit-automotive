@@ -29,14 +29,15 @@ export default function Navbar() {
       <div className="fixed top-0 left-0 right-0 z-50">
         <div
           className="flex items-center justify-center py-1"
-          style={{ background: scrolled ? "#F7F5F0" : "rgba(247,245,240,0.8)", fontSize: 11, fontWeight: 500 }}
+          style={{ background: scrolled ? "#F7F5F0" : "transparent", fontSize: 11, fontWeight: 500, transition: "background 0.2s" }}
         >
-          <span className="text-text-muted">Skupina SIT · </span>
+          <span style={{ color: scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)" }} className="transition-colors">Skupina SIT · </span>
           <a
             href="https://www.sittravel.cz"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-muted hover:text-primary ml-1 transition-colors"
+            className="transition-colors ml-1"
+            style={{ color: scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)" }}
           >
             SIT Travel
           </a>

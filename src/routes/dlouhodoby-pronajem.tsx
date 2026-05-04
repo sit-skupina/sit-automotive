@@ -61,17 +61,17 @@ function DlouhodobyPronajemPage() {
       </section>
 
       {/* CO ZAHRNUJE SPLÁTKA */}
-      <section className="section-padding" style={{ background: "var(--sit-bg-secondary)", borderTop: "1px solid var(--border)" }}>
+      <section className="section-padding" style={{ background: "var(--sit-bg-secondary)" }}>
         <div className="container-sit">
           <h2 className="text-center">Co zahrnuje měsíční splátka</h2>
           <p className="text-center text-text-muted mt-4 max-w-[520px] mx-auto">
             Standardní splátka zahrnuje vše níže. Rozsah služeb lze individuálně přizpůsobit.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 mt-14">
             {includes.map((item) => (
-              <div key={item.name} className="card-sit text-center">
-                <item.icon size={36} className="text-primary mx-auto mb-4" />
-                <h4 className="mb-2">{item.name}</h4>
+              <div key={item.name} className="text-center">
+                <item.icon size={24} strokeWidth={1.5} className="text-primary mx-auto mb-3" />
+                <h4 className="mb-1.5">{item.name}</h4>
                 <p className="text-sm text-text-muted leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -83,19 +83,14 @@ function DlouhodobyPronajemPage() {
       <section className="section-padding">
         <div className="container-sit">
           <h2 className="text-center">Čtyři kroky k Vašemu vozu</h2>
-          <div className="relative mt-16">
-            <div className="hidden md:block absolute top-6 left-[12%] right-[12%] h-px bg-primary" />
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative">
-              {steps.map((step) => (
-                <div key={step.num} className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-[15px] mb-8 relative z-10">
-                    {step.num}
-                  </div>
-                  <h4 className="mb-3">{step.title}</h4>
-                  <p className="text-[15px] text-text-muted leading-relaxed">{step.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-14">
+            {steps.map((step) => (
+              <div key={step.num}>
+                <span className="text-[13px] font-medium text-text-muted">{step.num}</span>
+                <h4 className="mt-1 mb-2">{step.title}</h4>
+                <p className="text-[15px] text-text-muted leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
