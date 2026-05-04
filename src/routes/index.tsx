@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Car, CalendarCheck, Shield, MapPin, Snowflake, Users, Globe, Navigation, Star } from "lucide-react";
+import { Shield, MapPin, Snowflake, Users, Globe, Navigation } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CtaSection from "@/components/CtaSection";
@@ -69,19 +69,12 @@ function HomePage() {
       </section>
 
       {/* STATS */}
-      <section style={{ background: "var(--sit-bg-secondary)", padding: "40px 0", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-        <div className="container-sit grid grid-cols-2 md:grid-cols-4">
+      <section style={{ background: "var(--sit-bg-secondary)", padding: "48px 0" }}>
+        <div className="container-sit grid grid-cols-2 md:grid-cols-4 gap-y-8">
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className="text-center px-6 py-5 md:py-0"
-              style={{
-                borderRight: i < stats.length - 1 ? "1px solid var(--border)" : undefined,
-                borderBottom: i < 2 ? "1px solid var(--border)" : undefined,
-              }}
-            >
-              <span className="block font-heading text-4xl font-bold text-primary leading-none mb-2">{s.value}</span>
-              <span className="text-[13px] font-medium text-text-muted">{s.label}</span>
+            <div key={i} className="text-center px-4">
+              <span className="block text-2xl md:text-[28px] font-semibold text-dark leading-tight mb-1.5">{s.value}</span>
+              <span className="text-[13px] text-text-muted">{s.label}</span>
             </div>
           ))}
         </div>
@@ -92,26 +85,24 @@ function HomePage() {
         <div className="container-sit">
           <h2 className="text-center">Vyberte způsob pronájmu</h2>
           <p className="text-center text-text-muted mt-4 max-w-[520px] mx-auto">
-            Krátkodobý pronájem na dny nebo víkendy, nebo dlouhodobý pronájem s vším v ceně. Obojí v prémiové kvalitě Mercedes-Benz.
+            Krátkodobý pronájem na dny nebo víkendy, nebo dlouhodobý pronájem s vším v ceně.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <div className="flex flex-col rounded-2xl p-10" style={{ border: "2px solid var(--primary)" }}>
-              <Car size={32} className="text-primary mb-5" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            <div className="flex flex-col rounded-xl p-8 md:p-10 bg-bg-secondary">
               <h3>Autopůjčovna</h3>
               <p className="text-[15px] text-text-muted leading-relaxed flex-1 mt-3">
-                Krátkodobý pronájem vozů Mercedes-Benz. Ideální na dovolenou, víkend nebo pracovní cestu. Přistavení po Praze, kompletní pojištění v ceně, navigace v každém voze. Od 890 Kč za den.
+                Krátkodobý pronájem vozů Mercedes-Benz. Ideální na dovolenou, víkend nebo pracovní cestu. Přistavení po Praze, kompletní pojištění v ceně.
               </p>
-              <p className="text-sm font-semibold text-primary mt-4">Od 890 Kč / den</p>
-              <Link to="/autopujcovna" className="btn-primary mt-6">Zobrazit vozy</Link>
+              <p className="text-[15px] font-semibold text-dark mt-5">Od 890 Kč / den</p>
+              <Link to="/autopujcovna" className="btn-primary mt-5">Zobrazit vozy</Link>
             </div>
-            <div className="flex flex-col rounded-2xl p-10 card-sit">
-              <CalendarCheck size={32} className="text-primary mb-5" />
+            <div className="flex flex-col rounded-xl p-8 md:p-10 bg-bg-secondary">
               <h3>Dlouhodobý pronájem</h3>
               <p className="text-[15px] text-text-muted leading-relaxed flex-1 mt-3">
-                Měsíční pronájem Mercedes-Benz se vším v jedné splátce — servis, pojištění, dálniční známka, asistence. Řešení pro firmy i jednotlivce kteří chtějí prémiový vůz bez starostí.
+                Měsíční pronájem se vším v jedné splátce — servis, pojištění, dálniční známka, asistence. Pro firmy i jednotlivce.
               </p>
-              <p className="text-sm font-semibold text-primary mt-4">Od 19 790 Kč / měsíc bez DPH</p>
-              <Link to="/dlouhodoby-pronajem" className="btn-secondary mt-6">Více o pronájmu</Link>
+              <p className="text-[15px] font-semibold text-dark mt-5">Od 19 790 Kč / měsíc bez DPH</p>
+              <Link to="/dlouhodoby-pronajem" className="btn-secondary mt-5">Více o pronájmu</Link>
             </div>
           </div>
         </div>
@@ -123,44 +114,35 @@ function HomePage() {
       {/* JAK TO FUNGUJE */}
       <section className="section-padding">
         <div className="container-sit">
-          <h2 className="text-center">Rezervace za 3 minuty.</h2>
-          <p className="text-center text-text-muted mt-4">Žádná složitá administrativa. Vůz máte kdy Vy potřebujete.</p>
-          <div className="relative mt-16">
-            <div className="hidden md:block absolute top-6 left-[16%] right-[16%] h-px bg-primary" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-              {steps.map((step) => (
-                <div key={step.num} className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-[15px] mb-8 relative z-10">
-                    {step.num}
-                  </div>
-                  <h4 className="mb-3">{step.title}</h4>
-                  <p className="text-[15px] text-text-muted leading-relaxed px-4">{step.desc}</p>
-                </div>
-              ))}
-            </div>
+          <h2 className="text-center">Jak to funguje</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
+            {steps.map((step) => (
+              <div key={step.num}>
+                <span className="text-[13px] font-medium text-text-muted">{step.num}</span>
+                <h4 className="mt-1 mb-2">{step.title}</h4>
+                <p className="text-[15px] text-text-muted leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
-          <div className="text-center mt-14">
+          <div className="text-center mt-12">
             <Link to="/kontakt" className="btn-primary">Rezervovat vůz</Link>
           </div>
         </div>
       </section>
 
       {/* RECENZE */}
-      <section className="section-padding" style={{ background: "var(--sit-bg-secondary)", borderTop: "1px solid var(--border)" }}>
+      <section className="section-padding" style={{ background: "var(--sit-bg-secondary)" }}>
         <div className="container-sit">
           <h2 className="text-center">Co říkají naši klienti</h2>
-          <div className="flex gap-5 overflow-x-auto mt-12 pb-4 snap-x snap-mandatory">
-            {reviews.map((r, i) => (
-              <div key={i} className="min-w-[280px] max-w-[300px] shrink-0 snap-start bg-background border border-border rounded-xl p-6 flex flex-col gap-3">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, j) => <Star key={j} size={14} className="text-primary fill-primary" />)}
-                </div>
-                <p className="text-sm text-text leading-relaxed flex-1">{r.text}</p>
-                <div>
-                  <span className="text-sm font-semibold text-dark">{r.name}</span>
-                  <span className="block text-xs text-text-muted">{r.role}</span>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {reviews.slice(0, 3).map((r, i) => (
+              <blockquote key={i} className="bg-background rounded-xl p-6 md:p-7">
+                <p className="text-[15px] text-text leading-relaxed">&ldquo;{r.text}&rdquo;</p>
+                <footer className="mt-4 text-sm">
+                  <span className="font-semibold text-dark">{r.name}</span>
+                  <span className="text-text-muted ml-1">· {r.role}</span>
+                </footer>
+              </blockquote>
             ))}
           </div>
         </div>
