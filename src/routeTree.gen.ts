@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OchranaOsobnichUdajuRouteImport } from './routes/ochrana-osobnich-udaju'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as DlouhodobyPronajemRouteImport } from './routes/dlouhodoby-pronajem'
+import { Route as AutopujcovnaRouteImport } from './routes/autopujcovna'
 import { Route as IndexRouteImport } from './routes/index'
 
+const OchranaOsobnichUdajuRoute = OchranaOsobnichUdajuRouteImport.update({
+  id: '/ochrana-osobnich-udaju',
+  path: '/ochrana-osobnich-udaju',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DlouhodobyPronajemRoute = DlouhodobyPronajemRouteImport.update({
+  id: '/dlouhodoby-pronajem',
+  path: '/dlouhodoby-pronajem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutopujcovnaRoute = AutopujcovnaRouteImport.update({
+  id: '/autopujcovna',
+  path: '/autopujcovna',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,88 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/autopujcovna': typeof AutopujcovnaRoute
+  '/dlouhodoby-pronajem': typeof DlouhodobyPronajemRoute
+  '/kontakt': typeof KontaktRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/autopujcovna': typeof AutopujcovnaRoute
+  '/dlouhodoby-pronajem': typeof DlouhodobyPronajemRoute
+  '/kontakt': typeof KontaktRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/autopujcovna': typeof AutopujcovnaRoute
+  '/dlouhodoby-pronajem': typeof DlouhodobyPronajemRoute
+  '/kontakt': typeof KontaktRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/autopujcovna'
+    | '/dlouhodoby-pronajem'
+    | '/kontakt'
+    | '/ochrana-osobnich-udaju'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/autopujcovna'
+    | '/dlouhodoby-pronajem'
+    | '/kontakt'
+    | '/ochrana-osobnich-udaju'
+  id:
+    | '__root__'
+    | '/'
+    | '/autopujcovna'
+    | '/dlouhodoby-pronajem'
+    | '/kontakt'
+    | '/ochrana-osobnich-udaju'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AutopujcovnaRoute: typeof AutopujcovnaRoute
+  DlouhodobyPronajemRoute: typeof DlouhodobyPronajemRoute
+  KontaktRoute: typeof KontaktRoute
+  OchranaOsobnichUdajuRoute: typeof OchranaOsobnichUdajuRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ochrana-osobnich-udaju': {
+      id: '/ochrana-osobnich-udaju'
+      path: '/ochrana-osobnich-udaju'
+      fullPath: '/ochrana-osobnich-udaju'
+      preLoaderRoute: typeof OchranaOsobnichUdajuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dlouhodoby-pronajem': {
+      id: '/dlouhodoby-pronajem'
+      path: '/dlouhodoby-pronajem'
+      fullPath: '/dlouhodoby-pronajem'
+      preLoaderRoute: typeof DlouhodobyPronajemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/autopujcovna': {
+      id: '/autopujcovna'
+      path: '/autopujcovna'
+      fullPath: '/autopujcovna'
+      preLoaderRoute: typeof AutopujcovnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,16 +137,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AutopujcovnaRoute: AutopujcovnaRoute,
+  DlouhodobyPronajemRoute: DlouhodobyPronajemRoute,
+  KontaktRoute: KontaktRoute,
+  OchranaOsobnichUdajuRoute: OchranaOsobnichUdajuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
