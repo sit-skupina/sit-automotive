@@ -61,7 +61,7 @@ export default function Navbar() {
                   to={l.to}
                   className="text-[15px] font-medium transition-colors"
                   style={{
-                    color: location.pathname === l.to ? "var(--primary)" : scrolled ? "var(--sit-text)" : "var(--sit-text)",
+                    color: location.pathname === l.to ? "var(--primary)" : scrolled ? "var(--sit-text)" : "#FFFFFF",
                   }}
                 >
                   {l.label}
@@ -73,7 +73,8 @@ export default function Navbar() {
             </div>
 
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 transition-colors"
+              style={{ color: scrolled ? "var(--sit-text)" : "#FFFFFF" }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
