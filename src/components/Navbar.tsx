@@ -61,7 +61,7 @@ export default function Navbar() {
                   to={l.to}
                   className="text-[15px] font-medium transition-colors"
                   style={{
-                    color: location.pathname === l.to ? "var(--primary)" : scrolled ? "var(--sit-text)" : "var(--sit-text)",
+                    color: location.pathname === l.to ? "var(--primary)" : scrolled ? "var(--sit-text)" : "#FFFFFF",
                   }}
                 >
                   {l.label}
