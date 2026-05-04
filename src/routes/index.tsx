@@ -5,104 +5,149 @@ import Footer from "@/components/Footer";
 import CtaSection from "@/components/CtaSection";
 import GroupBanner from "@/components/GroupBanner";
 import IncludedSection from "@/components/IncludedSection";
-import heroImg from "@/assets/car-hero.png";
+import heroImg from "@/assets/1-AMG-S63-2024-review.jpg";
+import { Car, Clock, MapPin, ShieldCheck, ChevronRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SIT Automotive | Prémiová autopůjčovna Mercedes-Benz Praha" },
-      { name: "description", content: "Krátkodobý i dlouhodobý pronájem vozů Mercedes-Benz v Praze. Přistavení na místo, kompletní pojištění v ceně, bez skrytých poplatků." },
+      { title: "SIT Automotive | Prémiová autopůjčovna vozů Mercedes-Benz a BMW" },
+      { name: "description", content: "Prestižní autopůjčovna v Praze. Krátkodobý i dlouhodobý pronájem luxusních vozidel bez starostí. Vše potřebné v ceně, profesionální přístup a diskrétnost." },
     ],
   }),
   component: HomePage,
 });
 
 const stats = [
-  { value: "Mercedes-Benz", label: "Výhradně prémiová značka" },
-  { value: "Praha", label: "Přistavení kdekoliv po Praze" },
-  { value: "100%", label: "Pojištění v ceně pronájmu" },
-  { value: "24/7", label: "Online rezervace kdykoliv" },
-];
-
-const reviews = [
-  { text: "Půjčili jsme si vůz na dovolenou s rodinou. Úžasný zážitek, vůz byl v perfektní kondici a vše proběhlo hladce.", name: "Alena", role: "Klientka" },
-  { text: "Skvělý vůz, skvělá akce na víkend. Přistavení proběhlo přesně jak bylo domluveno. Mohu jen doporučit.", name: "Lukáš", role: "Klient" },
-  { text: "Vůz na víkend do hor s kamarády — velmi pohodlný a prostorný. Nemůžeme si na nic stěžovat. Doporučujeme.", name: "Jana", role: "Klientka" },
-  { text: "Zajistili mi pronájem vysněné značky za výhodnou splátku. Férové jednání, vše šlo rychle a bez problémů.", name: "Karel", role: "Klient" },
-  { text: "Rychlé jednání, testovací jízda, zařízené financování — za pár dní jsem mohl jezdit. Skvělá zkušenost.", name: "Matouš", role: "Klient" },
-  { text: "S dlouhodobým pronájmem jsem spokojená. Veškeré služby zahrnuty ve splátce, mohu se věnovat podnikání.", name: "Lenka", role: "Klientka" },
-];
-
-const steps = [
-  { num: "01", title: "Zavolejte nebo napište", desc: "Kontaktujte nás telefonicky na +420 770 129 982 nebo e-mailem na rezervace@sitautomotive.cz. Sdělíte nám termín a preferovaný vůz." },
-  { num: "02", title: "Potvrdíme rezervaci", desc: "Rezervaci potvrdíme a domluvíme předání vozu. Vůz lze vyzvednout v naší kanceláři nebo přistavit na adresu v Praze za 300 Kč." },
-  { num: "03", title: "Jedete", desc: "Přejímáte vůz, podepíšete předávací protokol a můžete vyrazit. Vrácení na stejném místě nebo po domluvě." },
+  { value: "Prémiové vozy", label: "Výhradně luxusní značky" },
+  { value: "Praha", label: "Přistavení vozu na vaši adresu" },
+  { value: "Bez starostí", label: "Komplexní pojištění a servis" },
+  { value: "Diskrétnost", label: "Profesionální přístup ke klientům" },
 ];
 
 function HomePage() {
   return (
-    <>
+    <div className="bg-background min-h-screen">
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative flex items-center min-h-screen" style={{ minHeight: 600 }}>
-        <img src={heroImg} alt="Mercedes-Benz" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.48)" }} />
-        <div className="container-sit relative z-10 pt-24">
-          <div className="max-w-[680px]">
-            <span className="text-[11px] font-medium text-primary uppercase tracking-[0.12em]">
-              PRÉMIOVÁ AUTOPŮJČOVNA · PRAHA · MERCEDES-BENZ
+      {/* HERO SECTION */}
+      <section className="relative flex items-center min-h-screen pt-24" style={{ minHeight: 650 }}>
+        <img src={heroImg} alt="SIT Automotive prémiové vozy" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="container-sit relative z-10">
+          <div className="max-w-[720px] backdrop-blur-sm bg-black/20 p-8 md:p-12 rounded-2xl border border-white/10">
+            <span className="text-[12px] font-semibold text-primary uppercase tracking-[0.2em] mb-4 block">
+              SIT Automotive
             </span>
-            <h1 className="text-white mt-4">Prémiový Mercedes-Benz. Na den, víkend nebo celý rok.</h1>
-            <p className="text-white/80 text-xl leading-relaxed mt-6">
-              Krátkodobý i dlouhodobý pronájem vozů Mercedes-Benz v Praze. Přistavení na místo, kompletní pojištění v ceně, bez skrytých poplatků.
+            <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight">
+              Prestiž. Spolehlivost. <br className="hidden md:block" /> Bez kompromisů.
+            </h1>
+            <p className="text-white/80 text-lg md:text-xl leading-relaxed mt-6 mb-8 font-light">
+              Specializujeme se na poskytování prémiových vozidel pro klienty, kteří vyžadují špičkový servis a reprezentativní úroveň. Váš komfort je naší prioritou.
             </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Link to="/autopujcovna" className="btn-primary">Zobrazit vozy</Link>
-              <Link to="/dlouhodoby-pronajem" className="btn-ghost">Dlouhodobý pronájem</Link>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/kontakt" className="btn-primary px-8 py-4 text-lg">Kontaktujte nás</Link>
+              <a href="#sluzby" className="btn-ghost px-8 py-4 text-lg backdrop-blur-md">Naše služby</a>
             </div>
-            <p className="text-white/55 text-[13px] mt-6">
-              Přistavení vozu po Praze · Kompletní pojištění v ceně · Po-Pá 9:00–17:00
-            </p>
           </div>
         </div>
       </section>
 
       {/* STATS */}
-      <section style={{ background: "var(--sit-bg-secondary)", padding: "48px 0" }}>
-        <div className="container-sit grid grid-cols-2 md:grid-cols-4 gap-y-8">
+      <section className="bg-dark text-white py-16 border-b border-white/10">
+        <div className="container-sit grid grid-cols-2 md:grid-cols-4 gap-y-12">
           {stats.map((s, i) => (
-            <div key={i} className="text-center px-4">
-              <span className="block text-2xl md:text-[28px] font-semibold text-dark leading-tight mb-1.5">{s.value}</span>
-              <span className="text-[13px] text-text-muted">{s.label}</span>
+            <div key={i} className="text-center px-4 relative">
+              <span className="block text-2xl md:text-3xl font-semibold text-primary leading-tight mb-2">{s.value}</span>
+              <span className="text-[14px] text-white/60 tracking-wide uppercase">{s.label}</span>
+              {i !== stats.length - 1 && (
+                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-white/10" />
+              )}
             </div>
           ))}
         </div>
       </section>
 
-      {/* DVĚ SLUŽBY */}
-      <section className="section-padding">
+      {/* ABOUT US - O NÁS */}
+      <section id="o-nas" className="section-padding bg-background relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-dark/5 rounded-full blur-3xl -z-10" />
+        
         <div className="container-sit">
-          <h2 className="text-center">Vyberte způsob pronájmu</h2>
-          <p className="text-center text-text-muted mt-4 max-w-[520px] mx-auto">
-            Krátkodobý pronájem na dny nebo víkendy, nebo dlouhodobý pronájem s vším v ceně.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="flex flex-col rounded-xl p-8 md:p-10 bg-bg-secondary">
-              <h3>Autopůjčovna</h3>
-              <p className="text-[15px] text-text-muted leading-relaxed flex-1 mt-3">
-                Krátkodobý pronájem vozů Mercedes-Benz. Ideální na dovolenou, víkend nebo pracovní cestu. Přistavení po Praze, kompletní pojištění v ceně.
+          <div className="max-w-[800px] mx-auto text-center">
+            <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Představení firmy</span>
+            <h2 className="mb-6">Partner pro vaši mobilitu</h2>
+            <p className="text-lg text-text-muted leading-relaxed mb-6">
+              SIT Automotive přináší na trh autopůjčoven zcela nový standard. Náš vozový park je pečlivě sestaven z vozidel těch nejprestižnějších značek, především Mercedes-Benz a BMW. Neprovozujeme masovou půjčovnu s tisíci vozy. Zakládáme si na individuálním přístupu, maximální diskrétnosti a dokonalém technickém i vizuálním stavu každého vozu.
+            </p>
+            <p className="text-lg text-text-muted leading-relaxed">
+              Ať už potřebujete reprezentativní vůz na důležitou obchodní schůzku, luxusní svezení na víkend, nebo spolehlivého partnera pro dlouhodobý pronájem celé firemní flotily, jsme tu pro vás. Naší vizitkou je spokojený klient, který se k nám rád vrací.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES - SLUŽBY */}
+      <section id="sluzby" className="section-padding bg-bg-secondary relative">
+        <div className="container-sit">
+          <div className="text-center mb-16">
+            <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Naše portfolio</span>
+            <h2>Komplexní řešení mobility</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Služba 1 */}
+            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-border/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Clock size={28} className="text-primary" />
+              </div>
+              <h3 className="mb-4 text-2xl">Krátkodobý pronájem</h3>
+              <p className="text-text-muted leading-relaxed mb-8">
+                Ideální volba pro víkendové cesty, svatby, služební cesty či situace, kdy potřebujete okamžitě reprezentativní vůz. Zajišťujeme flexibilní předání a absolutní čistotu vozidel.
               </p>
-              <p className="text-[15px] font-semibold text-dark mt-5">Od 890 Kč / den</p>
-              <Link to="/autopujcovna" className="btn-primary mt-5">Zobrazit vozy</Link>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Plné pojištění</li>
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Dálniční známka v ceně</li>
+              </ul>
+              <Link to="/kontakt" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                Poptat pronájem <ChevronRight size={20} />
+              </Link>
             </div>
-            <div className="flex flex-col rounded-xl p-8 md:p-10 bg-bg-secondary">
-              <h3>Dlouhodobý pronájem</h3>
-              <p className="text-[15px] text-text-muted leading-relaxed flex-1 mt-3">
-                Měsíční pronájem se vším v jedné splátce — servis, pojištění, dálniční známka, asistence. Pro firmy i jednotlivce.
+
+            {/* Služba 2 */}
+            <div className="bg-dark text-white rounded-2xl p-8 md:p-10 shadow-xl border border-white/10 hover:shadow-2xl transition-all group">
+              <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Car size={28} className="text-white" />
+              </div>
+              <h3 className="mb-4 text-2xl text-white">Dlouhodobý pronájem</h3>
+              <p className="text-white/70 leading-relaxed mb-8">
+                Chytrá alternativa k operativnímu leasingu. V jedné měsíční platbě máte zahrnuto naprosto vše – od pojištění až po servis. Věnujte se svému byznysu, my se postaráme o vozy.
               </p>
-              <p className="text-[15px] font-semibold text-dark mt-5">Od 19 790 Kč / měsíc bez DPH</p>
-              <Link to="/dlouhodoby-pronajem" className="btn-secondary mt-5">Více o pronájmu</Link>
+              <ul className="space-y-3 mb-8 text-white/90">
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Fixní měsíční náklad</li>
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Kompletní správa vozu</li>
+              </ul>
+              <Link to="/kontakt" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                Zjistit více <ChevronRight size={20} />
+              </Link>
+            </div>
+
+            {/* Služba 3 */}
+            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-border/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group">
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <MapPin size={28} className="text-primary" />
+              </div>
+              <h3 className="mb-4 text-2xl">VIP Přistavení</h3>
+              <p className="text-text-muted leading-relaxed mb-8">
+                Šetříme váš čas. Vůz přistavíme přesně na vámi určené místo v rámci Prahy – ať už před vaši kancelář, domů nebo na letiště. Přebírání vozidel je rychlé a efektivní.
+              </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Doručení na adresu</li>
+                <li className="flex items-center gap-3 text-sm font-medium"><ShieldCheck size={18} className="text-primary" /> Časová flexibilita</li>
+              </ul>
+              <Link to="/kontakt" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                Domluvit přistavení <ChevronRight size={20} />
+              </Link>
             </div>
           </div>
         </div>
@@ -111,39 +156,53 @@ function HomePage() {
       {/* CO JE V CENĚ */}
       <IncludedSection />
 
-      {/* JAK TO FUNGUJE */}
-      <section className="section-padding">
+      {/* KONTAKT PROMO */}
+      <section className="section-padding bg-background relative border-t border-border/40">
         <div className="container-sit">
-          <h2 className="text-center">Jak to funguje</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-14">
-            {steps.map((step) => (
-              <div key={step.num}>
-                <span className="text-[13px] font-medium text-text-muted">{step.num}</span>
-                <h4 className="mt-1 mb-2">{step.title}</h4>
-                <p className="text-[15px] text-text-muted leading-relaxed">{step.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-3 block">Spojte se s námi</span>
+              <h2 className="mb-6">Osobní přístup ke každé poptávce</h2>
+              <p className="text-lg text-text-muted leading-relaxed mb-8">
+                Naše služby se vždy snažíme přizpůsobit vašim konkrétním požadavkům. Ať už hledáte vůz na jediný den nebo potřebujete sestavit vozový park pro vaši společnost, jsme připraveni vám nabídnout řešení na míru.
+              </p>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-bg-secondary rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-base mb-1">Naše adresa</h4>
+                    <p className="text-sm text-text-muted">Pod rovinou 682/4, 140 00 Praha 4</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-bg-secondary rounded-full flex items-center justify-center shrink-0">
+                    <Clock className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-base mb-1">Otevírací doba</h4>
+                    <p className="text-sm text-text-muted">Pondělí – Pátek: 9:00 – 17:00</p>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/kontakt" className="btn-primary">Rezervovat vůz</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* RECENZE */}
-      <section className="section-padding" style={{ background: "var(--sit-bg-secondary)" }}>
-        <div className="container-sit">
-          <h2 className="text-center">Co říkají naši klienti</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {reviews.slice(0, 3).map((r, i) => (
-              <blockquote key={i} className="bg-background rounded-xl p-6 md:p-7">
-                <p className="text-[15px] text-text leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-                <footer className="mt-4 text-sm">
-                  <span className="font-semibold text-dark">{r.name}</span>
-                  <span className="text-text-muted ml-1">· {r.role}</span>
-                </footer>
-              </blockquote>
-            ))}
+              <div className="mt-10">
+                <Link to="/kontakt" className="btn-primary">Přejít na kontakt</Link>
+              </div>
+            </div>
+            
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/20 h-[500px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.7770857317765!2d14.439818815714083!3d50.04018697942203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b910b10f5bd81%3A0xc6c4293f0b2fcf67!2sPod%20Rovinou%20682%2F4%2C%20140%2000%20Praha%204-Kr%C4%8D!5e0!3m2!1sen!2scz!4v1680000000000!5m2!1sen!2scz"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="SIT Automotive mapa"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -151,6 +210,6 @@ function HomePage() {
       <CtaSection />
       <GroupBanner />
       <Footer />
-    </>
+    </div>
   );
 }

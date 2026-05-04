@@ -15,10 +15,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="text-[11px] font-medium text-white/35 uppercase tracking-widest mb-4">Služby</div>
+            <div className="text-[11px] font-medium text-white/35 uppercase tracking-widest mb-4">Navigace</div>
             <div className="flex flex-col gap-2.5">
-              <Link to="/autopujcovna" className="text-sm text-white/55 hover:text-primary transition-colors">Autopůjčovna</Link>
-              <Link to="/dlouhodoby-pronajem" className="text-sm text-white/55 hover:text-primary transition-colors">Dlouhodobý pronájem</Link>
+              <Link to="/" hash="sluzby" className="text-sm text-white/55 hover:text-primary transition-colors">Naše služby</Link>
+              <Link to="/" hash="o-nas" className="text-sm text-white/55 hover:text-primary transition-colors">O nás</Link>
+              <Link to="/kontakt" className="text-sm text-white/55 hover:text-primary transition-colors">Kontakt</Link>
             </div>
           </div>
 

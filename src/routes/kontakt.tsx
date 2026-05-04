@@ -106,9 +106,9 @@ function KontaktPage() {
                 <label className="block text-xs font-medium text-text-muted mb-1.5">Mám zájem o *</label>
                 <select className="input-sit" required value={formData.interest} onChange={(e) => setFormData({...formData, interest: e.target.value})}>
                   <option value="">Vyberte...</option>
-                  <option>Krátkodobý pronájem (den/víkend)</option>
-                  <option>Víkendová akce Mercedes C 180d</option>
+                  <option>Krátkodobý pronájem</option>
                   <option>Dlouhodobý pronájem</option>
+                  <option>VIP Přistavení vozu</option>
                   <option>Obecný dotaz</option>
                 </select>
               </div>

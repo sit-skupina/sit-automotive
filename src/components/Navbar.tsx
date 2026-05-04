@@ -19,9 +19,9 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const navLinks = [
-    { to: "/autopujcovna" as const, label: "Autopůjčovna" },
-    { to: "/dlouhodoby-pronajem" as const, label: "Dlouhodobý pronájem" },
-    { to: "/kontakt" as const, label: "Kontakt" },
+    { to: "/", hash: "sluzby", label: "Služby" },
+    { to: "/", hash: "o-nas", label: "O nás" },
+    { to: "/kontakt", label: "Kontakt" },
   ];
 
   return (
@@ -58,11 +58,12 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((l) => (
                 <Link
-                  key={l.to}
+                  key={l.label}
                   to={l.to}
+                  hash={l.hash}
                   className="text-[15px] font-medium transition-colors"
                   style={{
-                    color: location.pathname === l.to ? "var(--primary)" : scrolled ? "var(--sit-text)" : "#FFFFFF",
+                    color: location.pathname === l.to && (!l.hash || location.hash === l.hash) ? "var(--primary)" : scrolled ? "var(--sit-text)" : "#FFFFFF",
                   }}
                 >
                   {l.label}
@@ -89,10 +90,11 @@ export default function Navbar() {
         <div className="fixed inset-0 z-40 bg-background pt-[100px] px-6 flex flex-col gap-6 md:hidden">
           {navLinks.map((l) => (
             <Link
-              key={l.to}
+              key={l.label}
               to={l.to}
+              hash={l.hash}
               className="text-lg font-medium py-2 border-b border-border"
-              style={{ color: location.pathname === l.to ? "var(--primary)" : "var(--sit-text)" }}
+              style={{ color: location.pathname === l.to && (!l.hash || location.hash === l.hash) ? "var(--primary)" : "var(--sit-text)" }}
             >
               {l.label}
             </Link>
