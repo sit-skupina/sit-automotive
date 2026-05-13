@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import sitLogo from "@/assets/sit-logo.png";
+import sitLogoWhite from "@/assets/white sitautomotive.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,8 +20,8 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const navLinks = [
-    { to: "/", hash: "sluzby", label: "Služby" },
-    { to: "/", hash: "o-nas", label: "O nás" },
+    { to: "/", hash: "vozovy-park", label: "Mercedes-Benz a BMW" },
+    { to: "/", hash: "pronajmy", label: "Pronájmy" },
     { to: "/kontakt", label: "Kontakt" },
   ];
 
@@ -43,16 +44,19 @@ export default function Navbar() {
           </a>
         </div>
         <nav
-          className="transition-all duration-200"
+          className="transition-all duration-300"
           style={{
             height: 72,
-            background: scrolled ? "#FFFFFF" : "transparent",
+            background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+            backdropFilter: scrolled ? "blur(16px)" : "none",
+            WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
             borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+            boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.07)" : "none",
           }}
         >
           <div className="container-sit h-full flex items-center justify-between">
             <Link to="/" className="flex items-center">
-              <img src={sitLogo} alt="SIT Automotive" className="h-7 bg-white rounded-full p-1" />
+              <img src={scrolled || location.pathname === "/kontakt" ? sitLogo : sitLogoWhite} alt="SIT Automotive" style={{ height: 35 }} />
             </Link>
 
             <div className="hidden md:flex items-center gap-8">

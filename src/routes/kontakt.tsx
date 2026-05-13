@@ -67,11 +67,11 @@ function KontaktPage() {
       <Navbar />
 
       {/* HERO */}
-      <section style={{ background: "var(--sit-dark)", padding: "120px 0 80px" }}>
+      <section style={{ paddingTop: 100, paddingBottom: 48, borderBottom: "1px solid var(--border)" }}>
         <div className="container-sit">
-          <h1 className="text-white" style={{ fontSize: 48 }}>Kontakt – pronájem vozů Praha</h1>
-          <p className="text-white/65 text-lg mt-4">
-            Rezervace, dotazy na pronájem, nebo jen si chtějte popovídat o vozech. Odpovídáme v pracovní dny do 2 hodin.
+          <h1 style={{ fontSize: 40 }}>Kontakt</h1>
+          <p style={{ fontSize: 16, color: "var(--sit-text-muted)", marginTop: 12 }}>
+            SIT Automotive s.r.o. · Pod rovinou 682/4, 140 00 Praha 4
           </p>
         </div>
       </section>
@@ -89,7 +89,7 @@ function KontaktPage() {
                 <div className="mt-4 space-y-2 text-sm">
                   <div className="flex items-center gap-2 text-text-muted"><Phone size={15} className="text-primary" /><a href="tel:+420770129982" className="hover:text-primary transition-colors">+420 770 129 982</a></div>
                   <div className="flex items-center gap-2 text-text-muted"><Phone size={15} className="text-primary" /><a href="tel:+420606209108" className="hover:text-primary transition-colors">+420 606 209 108</a></div>
-                  <div className="flex items-center gap-2 text-text-muted"><Mail size={15} className="text-primary" /><a href="mailto:rezervace@sitautomotive.cz" className="hover:text-primary transition-colors">rezervace@sitautomotive.cz</a></div>
+                  <div className="flex items-center gap-2 text-text-muted"><Mail size={15} className="text-primary" /><a href="mailto:pavel.vlk@sitautomotive.cz" className="hover:text-primary transition-colors">pavel.vlk@sitautomotive.cz</a></div>
                   <div className="flex items-center gap-2 text-text-muted"><MapPin size={15} className="text-primary" />Pod rovinou 682/4, 140 00 Praha 4</div>
                   <div className="flex items-center gap-2 text-text-muted"><Clock size={15} className="text-primary" />Po–Pá: 9:00–17:00</div>
                 </div>
@@ -160,7 +160,7 @@ function KontaktPage() {
                 Souhlasím se zpracováním osobních údajů dle GDPR.
               </label>
               <button type="submit" className="btn-primary w-full mt-4">Odeslat poptávku</button>
-              <p className="text-xs text-text-muted text-center mt-3">Odpovídáme v pracovní dny do 2 hodin.</p>
+              <p className="text-xs text-text-muted text-center mt-3">Zprávu zpracujeme v pracovní dny.</p>
             </form>
           </div>
         </div>

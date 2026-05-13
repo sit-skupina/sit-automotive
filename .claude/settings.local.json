@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(bun run *)",
+      "PowerShell(bun run *)",
+      "PowerShell(Get-Command *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\matej\\\\Documents\\\\GitHub\\\\sit-automotive-drive\" -Recurse -Directory)",
+      "Bash(Select-Object -First 20)"
+    ]
+  }
+}
