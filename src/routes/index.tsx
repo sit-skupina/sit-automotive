@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +9,12 @@ import carHero from "@/assets/car-hero.png";
 import bmwLogo from "@/assets/BMW.svg";
 import mercedesLogo from "@/assets/Mercedes-Logo.svg";
 import { useReveal } from "@/hooks/useReveal";
+import mercedesCar from "@/assets/car-c180d.png";
+import bmwCar from "@/assets/car-gla.png";
+import carB180 from "@/assets/car-b180.png";
+import carCla from "@/assets/car-cla.jpg";
+import carGlc from "@/assets/car-glc.jpg";
+import amgS63 from "@/assets/1-AMG-S63-2024-review.jpg";
 
 export const Route = createFileRoute("/")(
   {
@@ -65,6 +71,22 @@ function HomePage() {
   const revealONas = useReveal();
   const revealPronajmy = useReveal();
   const revealCTA = useReveal();
+
+  // Car slide-up animation — observe the SECTION (not clipped imgs)
+  const [carsVisible, setCarsVisible] = useState(false);
+  const carSectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = carSectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { setCarsVisible(true); observer.unobserve(el); }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -125,12 +147,46 @@ function HomePage() {
         </section>
 
         {/* PRONÁJMY */}
-        <section id="vozovy-park" className="section-padding bg-bg-secondary relative">
-          <div className="container-sit">
+        <section ref={carSectionRef} id="vozovy-park" className="section-padding bg-bg-secondary relative overflow-hidden">
+          {/* Left side — stacked car cards */}
+          <div className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col gap-3 w-56 pointer-events-none" style={{ zIndex: 0, paddingLeft: 0 }}>
+            {[amgS63, mercedesCar, carCla].map((src, i) => (
+              <div
+                key={i}
+                className="rounded-r-2xl overflow-hidden border-y border-r border-border/50 shadow-lg bg-white"
+                style={{
+                  opacity: carsVisible ? 1 : 0,
+                  transform: carsVisible ? 'translateX(0)' : 'translateX(-100%)',
+                  transition: `transform 0.9s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.13}s, opacity 0.6s ease ${0.1 + i * 0.13}s`,
+                }}
+              >
+                <img src={src} alt="" className="w-full h-28 object-cover" />
+              </div>
+            ))}
+          </div>
+
+          {/* Right side — stacked car cards */}
+          <div className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col gap-3 w-56 pointer-events-none" style={{ zIndex: 0 }}>
+            {[carB180, carGlc, bmwCar].map((src, i) => (
+              <div
+                key={i}
+                className="rounded-l-2xl overflow-hidden border-y border-l border-border/50 shadow-lg bg-white"
+                style={{
+                  opacity: carsVisible ? 1 : 0,
+                  transform: carsVisible ? 'translateX(0)' : 'translateX(100%)',
+                  transition: `transform 0.9s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.13}s, opacity 0.6s ease ${0.1 + i * 0.13}s`,
+                }}
+              >
+                <img src={src} alt="" className="w-full h-28 object-cover" />
+              </div>
+            ))}
+          </div>
+
+          <div className="container-sit relative" style={{ zIndex: 1 }}>
             <div ref={revealPronajmy} className="reveal text-center">
               <h2 className="mb-16">Pronájmy vozidel</h2>
 
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-16 sm:gap-32 mb-14" style={{ transform: 'translateX(-17px)' }}>
+              <div className="brand-logos-row flex flex-col sm:flex-row justify-center items-center gap-16 sm:gap-32 mb-14">
                 <div className="logo-brand flex flex-col items-center">
                   <div className="w-24 h-24 flex items-center justify-center mb-5">
                     <img src={mercedesLogo} alt="Mercedes-Benz logo" className="w-full h-full object-contain" />
