@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import sitLogo from "@/assets/sit-logo.png";
-import sitLogoWhite from "@/assets/white sitautomotive.png";
+import sitLogoWhite from "@/assets/sit-logo-white.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
