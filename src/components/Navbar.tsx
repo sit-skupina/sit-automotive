@@ -21,38 +21,44 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const navLinks = [
-    { to: "/", hash: "vozovy-park", label: "Mercedes-Benz a BMW" },
+    { to: "/", hash: "o-nas", label: "O nás" },
     { to: "/", hash: "pronajmy", label: "Pronájmy" },
-    { to: "/kontakt", label: "Kontakt" },
+    { to: "/", hash: "kontakt", label: "Kontakt" },
   ];
 
-  const isKontakt = location.pathname === "/kontakt";
+  const isDarkBgPage = location.pathname === "/";
 
   return (
     <>
       {/* Top bar */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <div
-          className="flex items-center justify-center py-1"
+          className="flex items-center justify-center py-1 text-[11px] font-medium transition-colors duration-300"
           style={{
             background: mobileOpen ? "#111" : scrolled ? "#F7F5F0" : "transparent",
-            fontSize: 11, fontWeight: 500,
-            transition: "background 0.3s",
           }}
         >
-          <span style={{ color: mobileOpen ? "rgba(255,255,255,0.4)" : scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)" }} className="transition-colors">
+          <span
+            style={{
+              color: mobileOpen ? "rgba(255,255,255,0.4)" : scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)",
+            }}
+          >
             Skupina SIT ·{" "}
           </span>
           <a
             href="https://www.sittravel.cz"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors ml-1"
-            style={{ color: mobileOpen ? "rgba(255,255,255,0.4)" : scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)" }}
+            className="hover:underline ml-1"
+            style={{
+              color: mobileOpen ? "rgba(255,255,255,0.4)" : scrolled ? "var(--sit-text-muted)" : "rgba(255,255,255,0.5)",
+            }}
           >
             SIT Travel
           </a>
@@ -62,7 +68,7 @@ export default function Navbar() {
           className="transition-all duration-300"
           style={{
             height: 72,
-            background: mobileOpen ? "#111" : scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+            background: mobileOpen ? "#111" : scrolled ? "rgba(255,255,255,0.94)" : "transparent",
             backdropFilter: scrolled && !mobileOpen ? "blur(16px)" : "none",
             WebkitBackdropFilter: scrolled && !mobileOpen ? "blur(16px)" : "none",
             borderBottom: scrolled && !mobileOpen ? "1px solid var(--border)" : "1px solid transparent",
@@ -72,7 +78,7 @@ export default function Navbar() {
           <div className="container-sit h-full flex items-center justify-between">
             <Link to="/" className="flex items-center" style={{ zIndex: 60, position: "relative" }}>
               <img
-                src={scrolled || isKontakt || mobileOpen ? sitLogo : sitLogoWhite}
+                src={scrolled || !isDarkBgPage || mobileOpen ? sitLogo : sitLogoWhite}
                 alt="SIT Automotive"
                 style={{ height: 35, filter: mobileOpen ? "brightness(0) invert(1)" : "none", transition: "filter 0.3s" }}
               />
@@ -85,32 +91,47 @@ export default function Navbar() {
                   key={l.label}
                   to={l.to}
                   hash={l.hash}
-                  className="text-[15px] font-medium transition-colors"
+                  className="text-[15px] font-medium transition-colors hover:text-primary"
                   style={{
-                    color: location.pathname === l.to && (!l.hash || location.hash === l.hash)
-                      ? "var(--primary)"
-                      : scrolled ? "var(--sit-text)" : "#FFFFFF",
+                    color: scrolled || !isDarkBgPage ? "var(--sit-text)" : "#FFFFFF",
                   }}
                 >
                   {l.label}
                 </Link>
               ))}
-              <Link to="/kontakt" className="btn-primary text-[15px] py-2.5 px-6">
-                Rezervovat vůz
-              </Link>
+              <a href="#kontakt" className="btn-primary text-[15px] py-2.5 px-6">
+                Poslat poptávku
+              </a>
             </div>
 
             {/* Hamburger */}
             <button
               className="md:hidden p-2 relative z-[60]"
-              style={{ color: mobileOpen || scrolled ? (mobileOpen ? "#fff" : "var(--sit-text)") : "#fff" }}
+              style={{ color: mobileOpen || scrolled || !isDarkBgPage ? (mobileOpen ? "#fff" : "var(--sit-text)") : "#fff" }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Zavřít menu" : "Otevřít menu"}
             >
-              <span style={{ display: "block", transition: "opacity 0.25s, transform 0.25s", opacity: mobileOpen ? 0 : 1, transform: mobileOpen ? "rotate(90deg)" : "rotate(0)", position: "absolute", top: 8, left: 8 }}>
+              <span
+                style={{
+                  display: "block",
+                  transition: "opacity 0.25s, transform 0.25s",
+                  opacity: mobileOpen ? 0 : 1,
+                  transform: mobileOpen ? "rotate(90deg)" : "rotate(0)",
+                  position: "absolute",
+                  top: 8,
+                  left: 8,
+                }}
+              >
                 <Menu size={24} />
               </span>
-              <span style={{ display: "block", transition: "opacity 0.25s, transform 0.25s", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "rotate(0)" : "rotate(-90deg)" }}>
+              <span
+                style={{
+                  display: "block",
+                  transition: "opacity 0.25s, transform 0.25s",
+                  opacity: mobileOpen ? 1 : 0,
+                  transform: mobileOpen ? "rotate(0)" : "rotate(-90deg)",
+                }}
+              >
                 <X size={24} />
               </span>
             </button>
@@ -132,7 +153,7 @@ export default function Navbar() {
           justifyContent: "center",
         }}
       >
-        <nav className="flex flex-col items-center gap-10 w-full px-8">
+        <nav className="flex flex-col items-center gap-8 w-full px-8">
           {navLinks.map((l, i) => (
             <Link
               key={l.label}
@@ -151,8 +172,8 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            to="/kontakt"
+          <a
+            href="#kontakt"
             onClick={() => setMobileOpen(false)}
             className="btn-primary px-10 py-4 text-lg mt-4"
             style={{
@@ -161,8 +182,8 @@ export default function Navbar() {
               transition: `opacity 0.5s ease 0.42s, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.42s`,
             }}
           >
-            Rezervovat vůz
-          </Link>
+            Poslat poptávku
+          </a>
         </nav>
         <div
           className="absolute bottom-8 text-center"

@@ -58,51 +58,52 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: .5rem;
+  --background: oklch(100% 0 0);
+  --foreground: oklch(23.5% .005 60);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(23.5% .005 60);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(23.5% .005 60);
+  --primary: oklch(55.5% .165 39);
+  --primary-foreground: oklch(100% 0 0);
+  --primary-hover: oklch(50% .155 39);
+  --primary-light: oklch(95.5% .025 50);
+  --secondary: oklch(96.5% .008 85);
+  --secondary-foreground: oklch(18% .005 60);
+  --muted: oklch(96.5% .008 85);
+  --muted-foreground: oklch(49% .008 85);
+  --accent: oklch(95.5% .025 50);
+  --accent-foreground: oklch(18% .005 60);
+  --destructive: oklch(57.7% .245 27.325);
+  --destructive-foreground: oklch(100% 0 0);
+  --border: oklch(86% .01 85);
+  --input: oklch(86% .01 85);
+  --ring: oklch(55.5% .165 39);
+  --bg-slate: oklch(96.5% .008 85);
+  --overlay: oklch(0% 0 0 / .45);
 
-  /* SIT Automotive palette */
-  --primary: #F5A623;
-  --primary-hover: #E09520;
-  --primary-light: #FEF3DC;
-  --primary-foreground: #FFFFFF;
+  /* SIT Automotive aliases */
   --sit-dark: #1A1A1A;
-  --sit-text: #2C2C2A;
-  --sit-text-muted: #6B6A66;
-  --sit-bg-secondary: #F9F6F1;
-  --sit-bg-accent: #FEF3DC;
-  --sit-overlay: rgba(0,0,0,0.48);
+  --sit-text: oklch(23.5% .005 60);
+  --sit-text-muted: oklch(49% .008 85);
+  --sit-bg-secondary: oklch(96.5% .008 85);
+  --sit-bg-accent: oklch(95.5% .025 50);
+  --sit-overlay: oklch(0% 0 0 / .45);
 
-  --background: #FFFFFF;
-  --foreground: #2C2C2A;
-  --card: #FFFFFF;
-  --card-foreground: #2C2C2A;
-  --popover: #FFFFFF;
-  --popover-foreground: #2C2C2A;
-  --secondary: #F7F5F0;
-  --secondary-foreground: #1A1A1A;
-  --muted: #F7F5F0;
-  --muted-foreground: #6B6A66;
-  --accent: #FEF3DC;
-  --accent-foreground: #1A1A1A;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #D3D1C7;
-  --input: #D3D1C7;
-  --ring: #F5A623;
-
-  --chart-1: #F5A623;
-  --chart-2: #E09520;
+  --chart-1: oklch(55.5% .165 39);
+  --chart-2: oklch(50% .155 39);
   --chart-3: #1A1A1A;
-  --chart-4: #6B6A66;
-  --chart-5: #D3D1C7;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #2C2C2A;
-  --sidebar-primary: #F5A623;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #FEF3DC;
-  --sidebar-accent-foreground: #1A1A1A;
-  --sidebar-border: #D3D1C7;
-  --sidebar-ring: #F5A623;
+  --chart-4: oklch(49% .008 85);
+  --chart-5: oklch(86% .01 85);
+  --sidebar: oklch(100% 0 0);
+  --sidebar-foreground: oklch(23.5% .005 60);
+  --sidebar-primary: oklch(55.5% .165 39);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-accent: oklch(95.5% .025 50);
+  --sidebar-accent-foreground: oklch(18% .005 60);
+  --sidebar-border: oklch(86% .01 85);
+  --sidebar-ring: oklch(55.5% .165 39);
 }
 
 @layer base {
@@ -314,11 +315,8 @@
     filter: drop-shadow(0 16px 28px rgba(0,0,0,0.18));
   }
 
-  /* --- Brand logos row (desktop-only offset) --- */
+  /* --- Brand logos row --- */
   .brand-logos-row { transform: none; }
-  @media (min-width: 640px) {
-    .brand-logos-row { transform: translateX(-17px); }
-  }
 
   /* --- Car slide from below --- */
   .car-left {

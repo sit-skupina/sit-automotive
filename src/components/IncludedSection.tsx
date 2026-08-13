@@ -1,28 +1,52 @@
-import { Shield, MapPin, Snowflake, Users, Globe, Navigation } from "lucide-react";
+import { Shield, Wrench, MapPin, Snowflake, Globe, LifeBuoy } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 const items = [
-  { icon: Shield, name: "Havarijní pojištění", desc: "Součást každého pronájmu. Spoluúčast 10% min. 10 000 Kč." },
-  { icon: MapPin, name: "Dálniční známka ČR", desc: "Česká dálniční známka v každém voze." },
-  { icon: Snowflake, name: "Sezónní pneumatiky", desc: "Správné pneumatiky podle ročního období." },
-  { icon: Users, name: "Pojištění dalšího řidiče", desc: "Pojištění platí i pro druhého řidiče bez příplatku." },
-  { icon: Globe, name: "Vycestování do EU", desc: "Vycestování mimo ČR v rámci EU po předchozím nahlášení." },
-  { icon: Navigation, name: "GPS navigace", desc: "Navigace v každém voze jako standard." },
+  {
+    icon: Shield,
+    name: "Pojištění vozu",
+    desc: "Součást každého nájmu je pojištění vozu. Podmínky nastavíme individuálně.",
+  },
+  {
+    icon: Wrench,
+    name: "Servis vozu",
+    desc: "Předepsaný servis výrobcem je vždy zahrnutý v našich splátkách.",
+  },
+  {
+    icon: MapPin,
+    name: "Dálniční známka ČR",
+    desc: "Česká dálniční známka je zahrnuta v každém nájmu.",
+  },
+  {
+    icon: Snowflake,
+    name: "Sezónní pneumatiky",
+    desc: "Na přání zákazníka zahrneme do nájmu zimní pneumatiky i s přezutím a uskladněním.",
+  },
+  {
+    icon: Globe,
+    name: "Cestování v rámci EU",
+    desc: "Cestování v rámci EU je zahrnuté v nájmu, mimo EU po předchozím nahlášení.",
+  },
+  {
+    icon: LifeBuoy,
+    name: "Asistenční služby",
+    desc: "V ceně nájmu jsou zahrnuty asistenční služby Mercedes-Benz a Direct pojišťovny.",
+  },
 ];
 
 export default function IncludedSection() {
   const revealHeading = useReveal();
 
   return (
-    <section className="section-padding" style={{ background: "#FFFFFF" }}>
+    <section className="section-padding bg-white">
       <div className="container-sit">
         <div ref={revealHeading} className="reveal text-center mb-14">
           <h2>Vše v ceně. Žádná překvapení.</h2>
-          <p className="text-text-muted mt-4 max-w-[480px] mx-auto">
-            Ceny pronájmu zahrnují vše potřebné. Platíte jen to, co vidíte.
+          <p className="text-text-muted mt-4 max-w-[500px] mx-auto text-lg">
+            Ceny pronájmu zahrnují vše potřebné pro bezstarostnou jízdu. Platíte jen to, co sjednáme.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, i) => (
             <IncludedItem key={item.name} item={item} index={i} />
           ))}
@@ -37,14 +61,14 @@ function IncludedItem({ item, index }: { item: typeof items[0]; index: number })
   return (
     <div
       ref={ref}
-      className="reveal text-center"
-      style={{ transitionDelay: `${index * 90}ms` }}
+      className="reveal p-8 rounded-2xl border border-border/50 bg-bg-secondary/40 hover:bg-bg-secondary hover:border-primary/40 transition-all duration-300 shadow-sm"
+      style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-5">
-        <item.icon size={40} strokeWidth={1.25} className="text-primary" />
+      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+        <item.icon size={32} strokeWidth={1.5} className="text-primary" />
       </div>
-      <h4 className="mb-2 text-[19px]">{item.name}</h4>
-      <p className="text-[15px] text-text-muted leading-relaxed">{item.desc}</p>
+      <h4 className="mb-3 text-xl font-semibold text-dark">{item.name}</h4>
+      <p className="text-base text-text-muted leading-relaxed">{item.desc}</p>
     </div>
   );
 }
