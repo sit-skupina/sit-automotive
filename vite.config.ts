@@ -6,4 +6,10 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+// Static SPA build for Netlify (dist/client) – no Cloudflare Worker output.
+export default defineConfig({
+  cloudflare: false,
+  tanstackStart: {
+    spa: { enabled: true, prerender: { outputPath: "/index" } },
+  },
+});
