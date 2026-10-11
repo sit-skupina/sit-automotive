@@ -82,10 +82,7 @@ function HomePage() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
             >
-              <source
-                src="https://cdn.jsdelivr.net/gh/matejboska-dev/sitautomotive-bg-video@main/sitautomotive%20bg%202.mp4"
-                type="video/mp4"
-              />
+              <source src="/hero-bg.webm" type="video/webm" />
             </video>
           </div>
           <div className="absolute inset-0 bg-black/[0.52]" aria-hidden="true" />

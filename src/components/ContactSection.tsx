@@ -2,6 +2,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 
+// Public client-side key (safe to expose) – submissions are delivered via Web3Forms
+const WEB3FORMS_ACCESS_KEY = "65a9f337-f075-4f53-b2b5-83a256df51e2";
+
 interface ContactSectionProps {
   id?: string;
   showTitle?: boolean;
@@ -19,9 +22,41 @@ export default function ContactSection({ id = "kontakt", showTitle = true }: Con
     gdpr: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Děkujeme za Vaši poptávku! Budeme Vás kontaktovat v pracovní dny do 2 hodin.");
+    const form = e.currentTarget;
+    const botcheck = (new FormData(form).get("botcheck") as string) || "";
+    if (botcheck) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Nová poptávka z webu – ${formData.name}`,
+          from_name: "SIT Automotive web",
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          interest: formData.interest,
+          dates: formData.dates,
+          message: formData.message,
+        }),
+      });
+      const data = await response.json();
+      if (!data.success) throw new Error(data.message);
+
+      alert("Děkujeme za Vaši poptávku! Budeme Vás kontaktovat v pracovní dny do 2 hodin.");
+      setFormData({ name: "", phone: "", email: "", interest: "Krátkodobý pronájem", dates: "", message: "", gdpr: false });
+    } catch {
+      alert("Odeslání se nepodařilo. Zkuste to prosím znovu, nebo nám zavolejte na +420 606 209 108.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -213,8 +248,14 @@ export default function ContactSection({ id = "kontakt", showTitle = true }: Con
                 <span>Souhlasím se zpracováním osobních údajů v souladu s ochranou osobních údajů.</span>
               </label>
 
-              <button type="submit" className="btn-primary w-full mt-6 py-4 text-base font-semibold shadow-md">
-                Poslat poptávku
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-primary w-full mt-6 py-4 text-base font-semibold shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {submitting ? "Odesílám…" : "Poslat poptávku"}
               </button>
               <p className="text-xs text-text-muted text-center mt-3">
                 Odeslání je bezplatné a k ničemu vás nezavazuje.
